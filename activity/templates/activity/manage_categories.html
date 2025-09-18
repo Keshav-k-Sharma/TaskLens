@@ -1,0 +1,30 @@
+{% extends 'activity/base.html' %}
+{% block content %}
+<h2>{{ title }}</h2>
+
+<a href="{% url 'add_log' %}" class="btn btn-sm btn-outline-secondary mb-3">← Back to Add Log</a>
+
+<h4>Add New Category</h4>
+<form method="post">
+  {% csrf_token %}
+  {{ category_form.as_p }}
+  <button type="submit" name="add_category" class="btn btn-primary">Add Category</button>
+</form>
+
+<hr>
+
+<h4>Existing Categories</h4>
+<ul>
+  {% for cat in categories %}
+    <li>
+      {{ cat.name }}
+      <form action="{% url 'delete_category' cat.pk %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+      </form>
+    </li>
+  {% empty %}
+    <li>No categories yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

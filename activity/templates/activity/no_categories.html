@@ -1,0 +1,7 @@
+
+{% extends 'activity/base.html' %}
+{% block content %}
+<h2>No Categories Found</h2>
+<p>You need to create at least one category before logging activities.</p>
+<a href="{% url 'manage_categories' %}" class="btn btn-primary">Add Category</a>
+{% endblock %}

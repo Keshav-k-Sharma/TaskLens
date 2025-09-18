@@ -1,0 +1,12 @@
+
+{% extends 'activity/base.html' %}
+{% block content %}
+<h2>Dashboard</h2>
+<ul>
+    {% for name, minutes in categories.items %}
+        <li>{{ name }}: {{ minutes|floatformat:2 }} minutes</li>
+    {% empty %}
+        <li>No data for today.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
