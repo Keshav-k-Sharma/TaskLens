@@ -7,7 +7,7 @@ class Category(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('name', 'user')  # Prevent duplicate category names per user
+        unique_together = ('name', 'user') 
 
     def __str__(self):
         return self.name
